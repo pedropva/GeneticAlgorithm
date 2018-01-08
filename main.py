@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import string as string
+from quickmaths import quickmaths
 
 MAX_GEN = 500
 TAM_POP = 100
@@ -11,13 +13,20 @@ def GeraPop():
     return np.random.randint(0,2, size=(TAM_POP, TAM_CROM))
 
 def BinParaInt(numeroBin):
-    x1, x2 = string[:len(numeroBin)/2], string[len(numeroBin)/2:]
-    #int(''.join(str(x) for x in x1,2)
-    return [int(''.join(str(x) for x in x1,2)),int(''.join(str(x) for x in x2,2))]#retorna vetor com os dois inteiros
+	stringBin=list(str(numeroBin))
+	mid = len(stringBin)/2
+    x1 = stringBin[:mid]
+    x2 = stringBin[mid:]
+    numero1 = int(str(x1))
+    numero2 = int(str(x2))
+    print numero1 + " e " + numero2 
+    return [numero1,numero2]#retorna vetor com os dois inteiros
+    #int(''.join(str(x) for x in numeroBin),2)
+    
 
 def Aptidao(cromossomo):
     x = BinParaInt(cromossomo)
-    return 1/(1+f(x))
+    return 1/(1+quickmaths.f(x))
 
 
 def CalculaAptidoes(pop):
@@ -73,10 +82,10 @@ for g in range(MAX_GEN):
     pop = nova_pop
     medias.append(np.mean(aptidoes))
     melhores.append(np.max(aptidoes))
-    print medias[-1]
+    #print medias[-1]
     
 aptidoes = CalculaAptidoes(pop)
 
 index_solucao = aptidoes.index(max(aptidoes))
 
-print "Resposta final: " + str(BinParaInt(pop[index_solucao])[0]) + "e" + str(BinParaInt(pop[index_solucao])[1])
+#print "Resposta final: " + str(BinParaInt(pop[index_solucao])[0]) + "e" + str(BinParaInt(pop[index_solucao])[1])
