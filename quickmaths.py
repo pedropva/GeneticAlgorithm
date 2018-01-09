@@ -6,14 +6,13 @@ class quickmaths():
     @staticmethod
     def f(x):#Funcao f(x) completa
         return -20*quickmaths.e1(x)-quickmaths.e2(x)+20+exp(1)
-
     @staticmethod
     def e1(x):#Exponencial 1
-        return exp(-0.2*sqrt((1/2)*quickmaths.s1(x)))
+        return exp(-0.2*sqrt((0.5)*quickmaths.s1(x)))
 
     @staticmethod
     def e2(x):#Exponencial 2
-        return exp((1/2)*quickmaths.s2(x))
+        return exp((0.5)*quickmaths.s2(x))
 
     #Função Sigma c(x)
     @staticmethod
